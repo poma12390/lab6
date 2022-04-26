@@ -1,0 +1,15 @@
+show
+info
+add
+kl
+1
+1
+1
+11.11.1111
+11.11.1112
+11.11.1111
+1
+1
+bake
+director
+execute_script test1.txt

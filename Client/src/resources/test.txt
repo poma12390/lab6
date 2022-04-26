@@ -1,0 +1,3 @@
+show
+info
+execute_script test1.txt

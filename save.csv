@@ -1,0 +1,4 @@
+name;x;y;salary;startDate;endDate;birthday;height;weight;position;id;creationDate
+pioime;123;13;213.0;11.11.1111;11.11.2222;05.12.1111;123.0;123.0;DIRECTOR;1;10.04.2022
+kl;1;1;1.0;11.11.1111;11.11.3333;29.11.1111;1.0;1.0;BAKER;2;12.04.2022
+kl;1;1;1.0;11.11.1111;11.11.4444;29.11.1112;1.0;1.0;BAKER;4;12.04.2022

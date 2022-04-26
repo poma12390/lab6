@@ -1,0 +1,4 @@
+execute_script test.txt
+add
+show
+save

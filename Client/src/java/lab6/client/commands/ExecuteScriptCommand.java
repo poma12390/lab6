@@ -49,6 +49,7 @@ public class ExecuteScriptCommand extends BaseCommand {
                     do {
                         try {
                             String commandWithParameters = inputString("");
+                            System.out.println("doing " + commandWithParameters);
                             runCommandFromString(commandWithParameters);
                         } catch (EndStreamException e) {
                             break;

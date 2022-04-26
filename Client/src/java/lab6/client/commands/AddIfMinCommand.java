@@ -32,9 +32,9 @@ public class AddIfMinCommand extends BaseCommand {
         WorkerDto man = Transformer.WorkerToWorkerDto(bum);
         dto.setBum(man);
         CommandRequestDto<AddIfMinCommandDto> crd = new CommandRequestDto<>("add_if_min", dto);
-        serverCaller.sendToServer(transformer.Serialize(crd));
 
-        byte[] buf = ServerReceiver.receiveFromServer();
+        byte[] buf = serverCaller.sendToServer(transformer.Serialize(crd));
+
         CommandResponseDto response = (CommandResponseDto) transformer.DeSerialize(buf);
         System.out.println(response.getResponse());
 

@@ -9,6 +9,7 @@ import lab6.server.ClientCaller;
 
 import java.io.Serializable;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class ShowCommand extends BaseCommand {
 
@@ -20,10 +21,12 @@ public class ShowCommand extends BaseCommand {
     @Override
     protected void Execute(CommandRequestDto<? extends Serializable> params, LinkedHashSet<Worker> set, Transformer transformer, ClientCaller clientCaller) {
         ShowCommandDto showCommandDto = new ShowCommandDto();
-        showCommandDto.setWorkers(new ArrayList<>(set));
-            //Commands.show(params, set);
+
+        ArrayList<Worker> workers = (ArrayList<Worker>) set.stream().sorted((o1, o2) -> o1.getName().compareTo(o2.getName())).collect(Collectors.toList());
+        showCommandDto.setWorkers(workers);
+
+        //Commands.show(params, set);
         CommandResponseDto dto = new CommandResponseDto(showCommandDto);
-        System.out.println(set.size());
         clientCaller.sendToClient(transformer.Serialize(dto));
     }
 }

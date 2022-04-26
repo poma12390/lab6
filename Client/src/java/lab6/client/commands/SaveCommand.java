@@ -13,6 +13,7 @@ public class SaveCommand extends BaseCommand {
     @Override
     protected void Execute(List<String> params) throws IOException {
         ParamsChecker.checkParams(0,params);
+        System.out.println("Я не знаю, зачем ее оставил");
 
     }
 }

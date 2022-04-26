@@ -35,9 +35,9 @@ public class UpdateIdCommand extends BaseCommand {
         }
 
         CommandRequestDto<UpdateIdCommandDto> crd = new CommandRequestDto<>("updateid", dto);
-        serverCaller.sendToServer(transformer.Serialize(crd));
 
-        byte[] buf = ServerReceiver.receiveFromServer();
+        byte[] buf = serverCaller.sendToServer(transformer.Serialize(crd));
+
         CommandResponseDto responseObj = (CommandResponseDto) transformer.DeSerialize(buf);
         String response = responseObj.getResponse();
         System.out.println(response);
@@ -45,9 +45,9 @@ public class UpdateIdCommand extends BaseCommand {
             Worker bum = new Worker();
             Utils.updateAll(bum);
             dto.setWorkerDto(Transformer.WorkerToWorkerDto(bum));
-            serverCaller.sendToServer(transformer.Serialize(crd));
 
-            buf = ServerReceiver.receiveFromServer();
+            buf = serverCaller.sendToServer(transformer.Serialize(crd));
+
             responseObj = (CommandResponseDto) transformer.DeSerialize(buf);
             response = responseObj.getResponse();
             System.out.println(response);

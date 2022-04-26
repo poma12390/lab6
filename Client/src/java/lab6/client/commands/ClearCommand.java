@@ -18,7 +18,9 @@ public class ClearCommand extends BaseCommand {
         ParamsChecker.checkParams(0, params);
         ClearCommandDto dto = new ClearCommandDto();
         CommandRequestDto<ClearCommandDto> crd = new CommandRequestDto<>("clear", dto);
+
         byte[] buf = serverCaller.sendToServer(transformer.Serialize(crd));
+
         CommandResponseDto response = (CommandResponseDto) transformer.DeSerialize(buf);
         System.out.println(response.getResponse());
 

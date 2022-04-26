@@ -33,7 +33,7 @@ public class RemoveByIdCommand extends BaseCommand {
         int id = removeByIdCommandDto.getId();
         long count = (set.stream().filter((p) -> p.getId() == id).count());
         set.removeIf(worker -> worker.getId() == id);
-        clientCaller.sendToClient(transformer.Serialize(count));
+                Commands.getIds().removeIf(p -> p.equals(id));
         removeByIdCommandDto.setCount(count);
         CommandResponseDto dto = new CommandResponseDto(removeByIdCommandDto);
         clientCaller.sendToClient(transformer.Serialize(dto));

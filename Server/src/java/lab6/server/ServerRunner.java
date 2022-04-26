@@ -42,13 +42,34 @@ public class ServerRunner implements SignalHandler{
             // выполнение в отдельном потоке
 
         }).start();
-
-
-
         System.out.println("Нажмите Ctrl+C для закрытия сервера");
         // TODO: ждать CTRL+C
 
         // TODO: после Ctrl+C вызвать сохранение коллекции
+
+
+
+        new Thread(() -> {
+            InputStream inputStream = System.in;
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            String input ="";
+            while (true) {
+                try {
+                    input = bufferedReader.readLine();
+                    if (input.equals("save")){
+                        Commands.runCommandFromString(Commands.getWorkersSet(), "save",new CommandRequestDto<>("save", new ClearCommandDto()));
+                    }
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+
+                }catch (NullPointerException ignored){
+                }
+            }
+
+            // выполнение в отдельном потоке
+
+        }).start();
 
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
@@ -68,7 +89,7 @@ public class ServerRunner implements SignalHandler{
 
             @Override
             public void handle(Signal signal) {
-                //Commands.runCommandFromString(Commands.getWorkersSet(), "save",new CommandRequestDto<>("save", new ClearCommandDto()));
+                Commands.runCommandFromString(Commands.getWorkersSet(), "save",new CommandRequestDto<>("save", new ClearCommandDto()));
             }
         };
         DiagnosticSignalHandler.install("TERM", signalHandler);

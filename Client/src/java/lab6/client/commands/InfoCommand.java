@@ -19,9 +19,8 @@ public class InfoCommand extends BaseCommand {
         InfoCommandDto dto = new InfoCommandDto();
         CommandRequestDto <InfoCommandDto> crd = new CommandRequestDto<>("info", dto);
 
-        serverCaller.sendToServer(transformer.Serialize(crd));
+        byte[] buf = serverCaller.sendToServer(transformer.Serialize(crd));
 
-        byte[] buf = ServerReceiver.receiveFromServer();
         CommandResponseDto response = (CommandResponseDto) transformer.DeSerialize(buf);
         System.out.println(response.getResponse());
     }

@@ -39,9 +39,9 @@ public class FilterBySalaryCommand extends BaseCommand {
             throw  new MissingFormatArgumentException("param should be float");
         }
         CommandRequestDto<FilterBySalaryCommandDto> crd = new CommandRequestDto<>(getName(), dto);
-        serverCaller.sendToServer(transformer.Serialize(crd));
 
-        byte[] buf = ServerReceiver.receiveFromServer();
+        byte[] buf = serverCaller.sendToServer(transformer.Serialize(crd));
+
         CommandResponseDto response = (CommandResponseDto) transformer.DeSerialize(buf);
         dto = (FilterBySalaryCommandDto) response.getCommandArgs();
         List<Worker> workers = dto.getWorkers();

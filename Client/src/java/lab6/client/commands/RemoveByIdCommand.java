@@ -38,10 +38,10 @@ public class RemoveByIdCommand extends BaseCommand {
             throw  new MissingFormatArgumentException("param should be int");
         }
 
-        serverCaller.sendToServer(transformer.Serialize(crd));
+        byte[] buf = serverCaller.sendToServer(transformer.Serialize(crd));
 
-        byte[] buf = ServerReceiver.receiveFromServer();
         CommandResponseDto response = (CommandResponseDto) transformer.DeSerialize(buf);
+
         dto = (RemoveByIdCommandDto) response.getCommandArgs();
         long count = dto.getCount();
         System.out.println("Deleted " +count + " elements");

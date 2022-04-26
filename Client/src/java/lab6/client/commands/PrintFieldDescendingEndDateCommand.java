@@ -24,9 +24,8 @@ public class PrintFieldDescendingEndDateCommand extends BaseCommand {
         PrintFieldDescendingEndDateCommandDto dto = new PrintFieldDescendingEndDateCommandDto();
         CommandRequestDto<PrintFieldDescendingEndDateCommandDto> crd = new CommandRequestDto<>(getName(), dto);
 
-        serverCaller.sendToServer(transformer.Serialize(crd));
+        byte[] buf = serverCaller.sendToServer(transformer.Serialize(crd));
 
-        byte[] buf = ServerReceiver.receiveFromServer();
         CommandResponseDto response = (CommandResponseDto) transformer.DeSerialize(buf);
         dto = (PrintFieldDescendingEndDateCommandDto) response.getCommandArgs();
         List<Date> responselist = dto.getDates();

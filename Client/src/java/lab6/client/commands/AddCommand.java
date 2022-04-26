@@ -26,6 +26,7 @@ public class AddCommand extends BaseCommand {
         WorkerDto man = Transformer.WorkerToWorkerDto(bum);
         dto.setBum(man);
         CommandRequestDto<AddCommandDto> crd = new CommandRequestDto<>("add", dto);
+
         byte[] buf = serverCaller.sendToServer(transformer.Serialize(crd));
 
         CommandResponseDto response = (CommandResponseDto) transformer.DeSerialize(buf);

@@ -54,8 +54,9 @@ public class RemoveAllByEndDateCommand extends BaseCommand {
         } else {
             throw new InvalidDateFormatException();
         }
-        serverCaller.sendToServer(transformer.Serialize(crd));
-        byte[] buf = ServerReceiver.receiveFromServer();
+
+        byte[] buf = serverCaller.sendToServer(transformer.Serialize(crd));
+
         CommandResponseDto response = (CommandResponseDto) transformer.DeSerialize(buf);
         dto = (RemoveAllByEndDateCommandDto) response.getCommandArgs();
         long count = dto.getCount();

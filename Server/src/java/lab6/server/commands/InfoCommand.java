@@ -27,8 +27,10 @@ public class InfoCommand extends BaseCommand {
         else{
             Iterator<Worker> it = set.iterator();
             Worker p1 = it.next();
+            response = response + "Collection size " + size + "\r\n";
             response = response + "Type - Worker \r\n";
             response = response + "Created date - " + p1.getCreationDate();
+
         }
         CommandResponseDto dto = new CommandResponseDto(new InfoCommandDto());
         dto.setResponse(response);

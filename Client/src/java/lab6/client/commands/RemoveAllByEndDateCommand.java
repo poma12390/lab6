@@ -1,6 +1,5 @@
 package lab6.client.commands;
 
-import lab6.client.ServerReceiver;
 import lab6.common.dto.CommandRequestDto;
 import lab6.common.dto.CommandResponseDto;
 import lab6.common.dto.RemoveAllByEndDateCommandDto;

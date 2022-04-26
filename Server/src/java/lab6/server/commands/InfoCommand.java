@@ -34,6 +34,6 @@ public class InfoCommand extends BaseCommand {
         }
         CommandResponseDto dto = new CommandResponseDto(new InfoCommandDto());
         dto.setResponse(response);
-        clientCaller.sendToClient(transformer.Serialize(dto));
+        clientCaller.sendToClient(transformer.serialize(dto));
     }
 }

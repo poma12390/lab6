@@ -17,7 +17,7 @@ import java.util.Arrays;
 
 public class ClientReceiver {
 
-    public static byte arr[] = new byte[2048];
+    public static byte arr[] = new byte[65536];
     public static int len = arr.length;
     public static DatagramSocket ds;
     public static DatagramPacket dp;

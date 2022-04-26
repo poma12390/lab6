@@ -26,8 +26,8 @@ public class ServerCaller {
 
         try {
             Transformer transformer = new Transformer();
-            byte[] ret = new byte[2048];
-            byte[] recive = new byte[1024];
+            byte[] ret = new byte[65536];
+            byte[] recive = new byte[4096];
             try {
                 dc = DatagramChannel.open();
                 buf = ByteBuffer.wrap(arr);
@@ -59,7 +59,6 @@ public class ServerCaller {
                    // addr = dc.receive(buf);
                     //ret = serverReceiver.catcher(dc, buf);
                     if (ret[0]!=0) {
-                        System.out.println("victory");
                         return buf.array();
                     }
                     if (i < 4) {

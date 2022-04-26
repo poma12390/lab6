@@ -44,7 +44,7 @@ public class AddIfMinCommand extends BaseCommand {
             } else {
                 dto.setResponse("not min element");
             }
-        } clientCaller.sendToClient(transformer.Serialize(dto));
+        } clientCaller.sendToClient(transformer.serialize(dto));
 
     }
 }

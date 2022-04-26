@@ -42,7 +42,7 @@ public class FilterBySalaryCommand extends BaseCommand {
         filterBySalaryCommandDto.setWorkers(workers);
         CommandResponseDto dto = new CommandResponseDto(filterBySalaryCommandDto);
         dto.setResponse(response);
-        clientCaller.sendToClient(transformer.Serialize(dto));
+        clientCaller.sendToClient(transformer.serialize(dto));
     }
 }
 

@@ -22,6 +22,6 @@ public class ClearCommand extends BaseCommand {
         set.clear();
         CommandResponseDto dto = new CommandResponseDto(new ClearCommandDto());
         dto.setResponse("success");
-        clientCaller.sendToClient(transformer.Serialize(dto));
+        clientCaller.sendToClient(transformer.serialize(dto));
     }
 }

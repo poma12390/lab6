@@ -28,13 +28,13 @@ public class RemoveLowerCommand extends BaseCommand {
         CommandResponseDto dto = new CommandResponseDto(params.getCommandArgs());
         if (set.size() == 0) {
             dto.setResponse("Collection is empty");
-            clientCaller.sendToClient(transformer.Serialize(dto));
+            clientCaller.sendToClient(transformer.serialize(dto));
             throw new EmptyCollectionException();
         }
         Worker min = Collections.min(set);
         set.remove(min);
 
         dto.setResponse("success");
-        clientCaller.sendToClient(transformer.Serialize(dto));
+        clientCaller.sendToClient(transformer.serialize(dto));
     }
 }

@@ -6,8 +6,6 @@ import lab6.common.dto.PersonDto;
 import lab6.common.dto.WorkerDto;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 public class Transformer {
 
@@ -25,7 +23,7 @@ public class Transformer {
         return man;
     }
 
-    public byte[] Serialize(Serializable obj){
+    public byte[] serialize(Serializable obj){
         try(ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
             ObjectOutputStream out = new ObjectOutputStream(bos);
             out.writeObject(obj);

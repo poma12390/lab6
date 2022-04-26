@@ -32,13 +32,13 @@ public class UpdateIdCommand extends BaseCommand {
             Worker bum = Commands.getWorkerById(updateIdCommandDto.getWorkerId());
             Transformer.WorkerToWorker(bum, newbum);
             dto.setResponse("Success");
-            clientCaller.sendToClient(transformer.Serialize(dto));
+            clientCaller.sendToClient(transformer.serialize(dto));
         } else {
             if (Commands.getIds().contains(updateIdCommandDto.getWorkerId())) {
                 dto.setResponse("Correct id");
-                clientCaller.sendToClient(transformer.Serialize(dto));
+                clientCaller.sendToClient(transformer.serialize(dto));
             } else {dto.setResponse("UnCorrect Id");
-                clientCaller.sendToClient(transformer.Serialize(dto));}
+                clientCaller.sendToClient(transformer.serialize(dto));}
 
         }
     }

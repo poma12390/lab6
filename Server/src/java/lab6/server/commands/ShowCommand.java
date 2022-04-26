@@ -22,12 +22,15 @@ public class ShowCommand extends BaseCommand {
     protected void Execute(CommandRequestDto<? extends Serializable> params, LinkedHashSet<Worker> set, Transformer transformer, ClientCaller clientCaller) {
         ShowCommandDto showCommandDto = new ShowCommandDto();
 
-        ArrayList<Worker> workers = (ArrayList<Worker>) set.stream().sorted((o1, o2) -> o1.getName().compareTo(o2.getName())).collect(Collectors.toList());
-        showCommandDto.setWorkers(workers);
+        showCommandDto.setWorkers(set
+                .stream()
+                .sorted(Comparator.comparing(Worker::getName))
+                .collect(Collectors.toList())
+        );
 
-        //Commands.show(params, set);
-        CommandResponseDto dto = new CommandResponseDto(showCommandDto);
-        clientCaller.sendToClient(transformer.Serialize(dto));
+        clientCaller.sendToClient(
+                transformer.serialize(new CommandResponseDto(showCommandDto))
+        );
     }
 }
 

@@ -33,8 +33,6 @@ public class ServerRunner implements SignalHandler{
         //Commands.temporaryStart(env);
 
 
-        // TODO: Запустить чтение датаграммов с клиента
-
         new Thread(() -> {
             ClientReceiver receiver = new ClientReceiver();
                 receiver.run();
@@ -44,7 +42,6 @@ public class ServerRunner implements SignalHandler{
 
         }).start();
         System.out.println("Save для закрылия");
-        // TODO: ждать CTRL+C
 
         // TODO: после Ctrl+C вызвать сохранение коллекции
 

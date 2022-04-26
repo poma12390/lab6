@@ -26,6 +26,6 @@ public class AddCommand extends BaseCommand {
         set.add(bum);
         CommandResponseDto dto = new CommandResponseDto(addCommandDto);
         dto.setResponse("success");
-        clientCaller.sendToClient(transformer.Serialize(dto));
+        clientCaller.sendToClient(transformer.serialize(dto));
     }
 }

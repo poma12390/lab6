@@ -26,9 +26,11 @@ import java.nio.ByteBuffer;
 public class ServerRunner implements SignalHandler{
 
     public static void main(String[] args) {
-        Commands.temporaryStart();
 
-
+        //Commands.temporaryStart("C:\\Users\\pomat\\IdeaProjects\\lab6\\Server\\save.csv");
+        String env = System.getenv("Javahome");
+        System.out.println(env + " env");
+        Commands.temporaryStart(env);
 
 
 
@@ -42,7 +44,7 @@ public class ServerRunner implements SignalHandler{
             // выполнение в отдельном потоке
 
         }).start();
-        System.out.println("Нажмите Ctrl+C для закрытия сервера");
+        System.out.println("Save для закрылия");
         // TODO: ждать CTRL+C
 
         // TODO: после Ctrl+C вызвать сохранение коллекции

@@ -65,8 +65,8 @@ public class Commands {
             new UpdateIdCommand()
     );
 
-    public static void temporaryStart(){
-        String start = open("C:\\Users\\pomat\\IdeaProjects\\lab6\\Server\\save.csv");
+    public static void temporaryStart(String filename){
+        String start = open(filename);
         begin(start, workers);
     }
 

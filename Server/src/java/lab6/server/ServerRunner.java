@@ -27,11 +27,10 @@ public class ServerRunner implements SignalHandler{
 
     public static void main(String[] args) {
 
-        //Commands.temporaryStart("C:\\Users\\pomat\\IdeaProjects\\lab6\\Server\\save.csv");
-        String env = System.getenv("Javahome");
-        System.out.println(env + " env");
-        Commands.temporaryStart(env);
-
+        Commands.temporaryStart("C:\\Users\\pomat\\IdeaProjects\\lab6\\Server\\save.csv");
+        //String env = System.getenv("Javahome");
+        //System.out.println(env + " env");
+        //Commands.temporaryStart(env);
 
 
         // TODO: Запустить чтение датаграммов с клиента
@@ -91,6 +90,7 @@ public class ServerRunner implements SignalHandler{
 
             @Override
             public void handle(Signal signal) {
+                System.out.println("saving collection");
                 Commands.runCommandFromString(Commands.getWorkersSet(), "save",new CommandRequestDto<>("save", new ClearCommandDto()));
             }
         };
